@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8qoeq1ssscbs"]
+
+[ext_resource type="Script" uid="uid://371jrwcf01e3" path="res://ui/hearts_manager.gd" id="1_276te"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartsManager" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 618.0
+offset_bottom = 178.0
+script = ExtResource("1_276te")

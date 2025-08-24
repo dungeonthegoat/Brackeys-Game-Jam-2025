@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=5 format=3 uid="uid://chq0ah4pgajbt"]
+
+[ext_resource type="Script" uid="uid://clrylbqkrute1" path="res://components/projectile/projectile.gd" id="1_0pudm"]
+[ext_resource type="Script" uid="uid://71yeacgk7hc7" path="res://components/projectile/projectile_movement_pattern.gd" id="1_an1nm"]
+[ext_resource type="Texture2D" uid="uid://7tnxxwua5tw5" path="res://entities/projectiles/test_projectile_2/bullet_2.png" id="2_w4al1"]
+
+[sub_resource type="Resource" id="Resource_ffbnn"]
+script = ExtResource("1_an1nm")
+initial_speed = 50.0
+acceleration = Vector2(0, 0)
+global_acceleration = Vector2(0, 0)
+rotation_speed = 0.0
+rotational_accel = 0.0
+frequency = 2.0
+amplitude = 50.0
+wave_axis = Vector2(1, 0)
+noise_freq = 0.0
+noise_amp = 0.0
+metadata/_custom_type_script = "uid://71yeacgk7hc7"
+
+[resource]
+script = ExtResource("1_0pudm")
+texture = ExtResource("2_w4al1")
+lifetime = 13.0
+damage = 1
+target_group = 1
+piercing = false
+size = Vector2i(12, 12)
+movement_pattern = SubResource("Resource_ffbnn")
+metadata/_custom_type_script = "uid://clrylbqkrute1"

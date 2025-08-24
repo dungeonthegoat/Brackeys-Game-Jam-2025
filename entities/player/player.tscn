@@ -1,9 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddu0xtlx3viq8"]
+[gd_scene load_steps=4 format=3 uid="uid://ddu0xtlx3viq8"]
 
 [ext_resource type="Texture2D" uid="uid://dppl1jmvbphy3" path="res://entities/player/icon.svg" id="1_symyc"]
+[ext_resource type="Script" uid="uid://bmeid21ll2exw" path="res://entities/player/movement_controller.gd" id="2_abrql"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
+size = Vector2(22, 22)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_symyc")
+
+[node name="MovementController" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("2_abrql")
+body = NodePath("..")
+acceleration = 2500.0
+max_speed = 200.0
+slow_speed = 100.0
+
+[node name="CollisionShape" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape"]
+shape = SubResource("RectangleShape2D_abrql")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci3itqxjylchf"]
+
+[ext_resource type="Script" uid="uid://b8uattwgy7hgt" path="res://ui/heart/heart.gd" id="1_dsvee"]
+[ext_resource type="Texture2D" uid="uid://dctju1u5tnr4v" path="res://ui/heart/heart_full.png" id="1_k8aaq"]
+
+[node name="Heart" type="Control" node_paths=PackedStringArray("texture")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dsvee")
+texture = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.999422, 1.00058)
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("1_k8aaq")
