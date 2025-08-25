@@ -12,6 +12,7 @@ signal player_died()
 const STARTING_MAX_HEALTH: int = 10
 
 var ChallengeLevel: Node2D
+var current_progress: float
 
 
 var player_health: int:
@@ -48,7 +49,7 @@ func reset() -> void:
 
 
 func progress_changed(new_progress: float) -> void:
-	pass
+	current_progress = new_progress
 
 
 func challenge_completed() -> void:
