@@ -8,11 +8,11 @@ script = ExtResource("1_dnosu")
 shaker = NodePath("Shaker2D")
 
 [node name="Shaker2D" type="Node2D" parent="."]
-position = Vector2(3.38315e-34, 6.58494e-34)
+position = Vector2(-6.11541e-10, 1.39899e-09)
 script = ExtResource("1_lky0s")
-speed = 8.0
-strength = 20.0
-decay = 10.0
+speed = 6.0
+strength = 10.0
+decay = 15.0
 metadata/_custom_type_script = "uid://dhsnb0v3ghp8j"
 
 [node name="Camera2D" type="Camera2D" parent="Shaker2D"]

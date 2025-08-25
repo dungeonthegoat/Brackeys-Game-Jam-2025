@@ -14,12 +14,7 @@ const STARTING_MAX_HEALTH: int = 10
 
 var player_health: int:
 	set(new_health):
-		var diff: int = player_health - new_health
 		player_health = new_health
-		if diff > 0:
-			player_healed.emit(diff)
-		elif diff < 0:
-			player_damaged.emit(diff)
 		player_health_changed.emit(new_health)
 
 var player_max_health: int = STARTING_MAX_HEALTH:
@@ -49,6 +44,8 @@ func hurt_player(amount: int) -> void:
 	if player_health == 0: return
 
 	player_health = clampi(player_health - amount, 0, player_max_health)
+	player_damaged.emit(amount)
+	
 	if player_health == 0:
 		player_died.emit()
 
@@ -57,3 +54,4 @@ func heal_player(amount: int) -> void:
 	if player_health == 0: return
 	
 	player_health = clampi(player_health + amount, 0, player_max_health)
+	player_healed.emit(amount)

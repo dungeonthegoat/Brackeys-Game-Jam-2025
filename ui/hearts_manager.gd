@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends GridContainer
 
 
 const HEART_ICON: PackedScene = preload("res://ui/heart/heart.tscn")

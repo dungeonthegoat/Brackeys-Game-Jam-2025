@@ -29,6 +29,9 @@ enum SequenceType {
 ## Whether or not it is currently spawning.
 @export var playing: bool = false:
 	set(value):
+		if not spawn_timer:
+			return
+		
 		playing = value
 		spawn_projectile()
 		if value:
@@ -70,7 +73,8 @@ func _ready() -> void:
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(tick)
 
-	playing = true
+	if not Engine.is_editor_hint():
+		playing = true
 
 
 func tick() -> void:

@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=7 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://bmt287ayg25cn" path="res://components/projectile/projectile_spawner_2d.gd" id="3_74lek"]
 [ext_resource type="PackedScene" uid="uid://bmca3dsipxofp" path="res://entities/player/player_camera.tscn" id="3_iyx0m"]
-[ext_resource type="Resource" uid="uid://bh0kplkp75wwd" path="res://entities/projectiles/test_projectile_1/test_projectile_1.tres" id="5_j5jx5"]
+[ext_resource type="Resource" uid="uid://bymlx5kac4q12" path="res://entities/projectiles/test_projectile_6/test_projectile_6.tres" id="5_j5jx5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5jx5"]
 
 [node name="Test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
-position = Vector2(-211, 106)
+position = Vector2(-191, 83)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -18,9 +20,46 @@ position = Vector2(-211, 106)
 [node name="PlayerCamera" parent="." instance=ExtResource("3_iyx0m")]
 
 [node name="ProjectileSpawner2D" type="Node2D" parent="."]
-position = Vector2(0, -162)
+position = Vector2(-145, 0)
 script = ExtResource("3_74lek")
-spawn_size = Vector2(576, 0)
+spawn_sequence = 1
+spawn_sequence_freq = 0.02
 projectile = ExtResource("5_j5jx5")
-spawn_rate = 15.0
+spawn_direction = 2
+angle_sequence = 1
+angle_sequence_freq = 0.0
+spawn_rate = 8.0
 metadata/_custom_type_script = "uid://bmt287ayg25cn"
+
+[node name="ProjectileSpawner2D2" type="Node2D" parent="."]
+position = Vector2(166, 0)
+script = ExtResource("3_74lek")
+spawn_sequence = 1
+spawn_sequence_freq = 0.02
+projectile = ExtResource("5_j5jx5")
+spawn_direction = 2
+angle_sequence = 1
+angle_sequence_freq = 0.0
+spawn_rate = 8.0
+metadata/_custom_type_script = "uid://bmt287ayg25cn"
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, 162)
+shape = SubResource("WorldBoundaryShape2D_j5jx5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(-288, 0)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_j5jx5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, -162)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_j5jx5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(288, 0)
+rotation = 4.71238
+shape = SubResource("WorldBoundaryShape2D_j5jx5")
