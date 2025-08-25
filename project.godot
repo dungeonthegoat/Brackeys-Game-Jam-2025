@@ -17,7 +17,7 @@ config/icon="res://entities/player/icon.svg"
 
 [autoload]
 
-Game="*res://entities/game.gd"
+Game="*res://components/game.gd"
 
 [debug]
 
@@ -37,6 +37,8 @@ enabled=PackedStringArray("res://addons/shaker2d/plugin.cfg", "res://addons/wigg
 [global_group]
 
 Player=""
+InstantZones=""
+GradualZones=""
 
 [input]
 

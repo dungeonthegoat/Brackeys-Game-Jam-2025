@@ -11,6 +11,8 @@ signal player_died()
 
 const STARTING_MAX_HEALTH: int = 10
 
+var ChallengeLevel: Node2D
+
 
 var player_health: int:
 	set(new_health):
@@ -36,8 +38,22 @@ func get_player_position() -> Variant:
 
 
 func reset() -> void:
+	ChallengeLevel = get_tree().get_root().find_child("ChallengeLevel", true, false)
+	if ChallengeLevel:
+		ChallengeLevel.challenge_progress_changed.connect(progress_changed)
+		ChallengeLevel.challenge_completed.connect(challenge_completed)
+	
 	player_max_health = STARTING_MAX_HEALTH
 	player_health = STARTING_MAX_HEALTH
+
+
+func progress_changed(new_progress: float) -> void:
+	pass
+
+
+func challenge_completed() -> void:
+	for signal_dict: Dictionary in ChallengeLevel.get_signal_list():
+		print(signal_dict.name)
 
 
 func hurt_player(amount: int) -> void:

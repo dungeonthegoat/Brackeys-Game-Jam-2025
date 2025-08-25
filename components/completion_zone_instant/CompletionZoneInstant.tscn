@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfw7350gukyxd"]
+
+[ext_resource type="Script" uid="uid://cgxqywj4amvdd" path="res://components/completion_zone_instant/CompletionZoneInstant.gd" id="1_kypwo"]
+
+[node name="CompletionZoneInstant" type="Area2D" groups=["InstantZones"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_kypwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

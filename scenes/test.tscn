@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=8 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://bmt287ayg25cn" path="res://components/projectile/projectile_spawner_2d.gd" id="3_74lek"]
 [ext_resource type="PackedScene" uid="uid://bmca3dsipxofp" path="res://entities/player/player_camera.tscn" id="3_iyx0m"]
 [ext_resource type="Resource" uid="uid://bymlx5kac4q12" path="res://entities/projectiles/test_projectile_6/test_projectile_6.tres" id="5_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://cyuuab2j0bfa2" path="res://components/challenge_level/ChallengeLevel.tscn" id="6_lpvoh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5jx5"]
 
@@ -63,3 +64,5 @@ shape = SubResource("WorldBoundaryShape2D_j5jx5")
 position = Vector2(288, 0)
 rotation = 4.71238
 shape = SubResource("WorldBoundaryShape2D_j5jx5")
+
+[node name="ChallengeLevel" parent="." instance=ExtResource("6_lpvoh")]
