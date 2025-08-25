@@ -1,27 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=6 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://bmt287ayg25cn" path="res://components/projectile/projectile_spawner_2d.gd" id="3_74lek"]
-[ext_resource type="Resource" uid="uid://d0r5ioiirgwem" path="res://entities/projectiles/test_projectile_4/test_projectile_4.tres" id="4_74lek"]
+[ext_resource type="PackedScene" uid="uid://bmca3dsipxofp" path="res://entities/player/player_camera.tscn" id="3_iyx0m"]
+[ext_resource type="Resource" uid="uid://bh0kplkp75wwd" path="res://entities/projectiles/test_projectile_1/test_projectile_1.tres" id="5_j5jx5"]
 
 [node name="Test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-211, 106)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_bl13t")]
 
-[node name="ProjectileSpawner2D3" type="Node2D" parent="."]
+[node name="PlayerCamera" parent="." instance=ExtResource("3_iyx0m")]
+
+[node name="ProjectileSpawner2D" type="Node2D" parent="."]
+position = Vector2(0, -162)
 script = ExtResource("3_74lek")
-spawn_size = Vector2(576, 324)
-edges_only = true
-spawn_sequence = 1
-projectile = ExtResource("4_74lek")
-playing = true
-spawn_direction = 2
-spawn_rate = 10.0
+spawn_size = Vector2(576, 0)
+projectile = ExtResource("5_j5jx5")
+spawn_rate = 15.0
 metadata/_custom_type_script = "uid://bmt287ayg25cn"

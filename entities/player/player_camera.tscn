@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmca3dsipxofp"]
+
+[ext_resource type="Script" uid="uid://184pbqrbp08n" path="res://entities/player/player_camera.gd" id="1_dnosu"]
+[ext_resource type="Script" uid="uid://dhsnb0v3ghp8j" path="res://addons/shaker2d/shaker2d_node.gd" id="1_lky0s"]
+
+[node name="PlayerCamera" type="Node2D" node_paths=PackedStringArray("shaker")]
+script = ExtResource("1_dnosu")
+shaker = NodePath("Shaker2D")
+
+[node name="Shaker2D" type="Node2D" parent="."]
+position = Vector2(3.38315e-34, 6.58494e-34)
+script = ExtResource("1_lky0s")
+speed = 8.0
+strength = 20.0
+decay = 10.0
+metadata/_custom_type_script = "uid://dhsnb0v3ghp8j"
+
+[node name="Camera2D" type="Camera2D" parent="Shaker2D"]

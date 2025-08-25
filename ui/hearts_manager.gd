@@ -11,6 +11,8 @@ func _ready() -> void:
 	Game.player_max_health_changed.connect(func(new_max_health: int) -> void: refresh_hearts(new_max_health, Game.player_health))
 	Game.player_health_changed.connect(func(new_health: int) -> void: _update_hearts(new_health))
 
+	refresh_hearts(Game.player_max_health, Game.player_health)
+
 
 func refresh_hearts(max_health: int, health: int) -> void:
 	hearts.clear()

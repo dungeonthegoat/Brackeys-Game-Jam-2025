@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp446vx2fhk46"
-path="res://.godot/imported/bullet_1.png-daa34032cb8a49b34fffc9fda6832a78.ctex"
+uid="uid://cqlohmrrogc1j"
+path="res://.godot/imported/Shaker2D.svg-c21edcc9e3ecfe13b7f0d4f09de4b877.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/projectiles/test_projectile_1/bullet_1.png"
-dest_files=["res://.godot/imported/bullet_1.png-daa34032cb8a49b34fffc9fda6832a78.ctex"]
+source_file="res://addons/shaker2d/Shaker2D.svg"
+dest_files=["res://.godot/imported/Shaker2D.svg-c21edcc9e3ecfe13b7f0d4f09de4b877.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

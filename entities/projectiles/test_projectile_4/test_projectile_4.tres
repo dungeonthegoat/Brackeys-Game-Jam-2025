@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://71yeacgk7hc7"
 [resource]
 script = ExtResource("1_0n5eh")
 texture = ExtResource("3_o5yik")
-lifetime = 14.0
+lifetime = 30.0
 damage = 2
 target_group = 1
 piercing = false

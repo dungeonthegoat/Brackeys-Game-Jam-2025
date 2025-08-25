@@ -4,6 +4,10 @@ class_name Projectile2D
 extends Area2D
 
 
+const ARENA_WIDTH: int = 576
+const ARENA_HEIGHT: int = 324
+
+
 @export var projectile: Projectile:
 	set(new_proj):
 		projectile = new_proj
@@ -38,11 +42,15 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.autostart = true
 
+	var mat: CanvasItemMaterial = CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	sprite.material = mat
+
 	add_child(timer)
 	add_child(sprite)
 	add_child(collision)
 
-	timer.timeout.connect(queue_free)
+	timer.timeout.connect(destroy)
 
 	if projectile:
 		_update_projectile(projectile)
@@ -51,6 +59,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (not play_in_editor) and Engine.is_editor_hint():
 		return
+	
+	if abs(global_position.x) > ARENA_WIDTH / 2.0 or abs(global_position.y) > ARENA_HEIGHT / 2.0:
+		destroy()
 
 	t += delta * movement.frequency
 	velocity += movement.acceleration * delta
@@ -82,3 +93,7 @@ func _update_projectile(new_proj: Projectile) -> void:
 			collision_layer = 2
 		Projectile.TargetGroup.ENEMY:
 			collision_layer = 4
+
+
+func destroy() -> void:
+	queue_free()

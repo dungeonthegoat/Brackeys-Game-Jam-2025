@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clrylbqkrute1" path="res://components/projectile/projectile.gd" id="1_t5g1g"]
 [ext_resource type="Script" uid="uid://71yeacgk7hc7" path="res://components/projectile/projectile_movement_pattern.gd" id="1_ys1lc"]
-[ext_resource type="Texture2D" uid="uid://c8xltn1the554" path="res://entities/projectiles/test_projectile_1/bullet_1.png" id="3_ogktm"]
+[ext_resource type="Texture2D" uid="uid://cp446vx2fhk46" path="res://entities/projectiles/test_projectile_1/bullet_1.png" id="3_ogktm"]
 
 [sub_resource type="Resource" id="Resource_ogktm"]
 script = ExtResource("1_ys1lc")

@@ -17,6 +17,7 @@ enum SequenceType {
 }
 
 
+@export var count: int = 1
 @export var spawn_size: Vector2
 @export var edges_only: bool
 @export var spawn_sequence: SequenceType = SequenceType.RANDOM
@@ -67,16 +68,21 @@ func _ready() -> void:
 	spawn_timer.autostart = false
 	spawn_timer.wait_time = 1.0 / spawn_rate
 	add_child(spawn_timer)
-	spawn_timer.timeout.connect(spawn_projectile)
+	spawn_timer.timeout.connect(tick)
 
 	playing = true
 
 
-func spawn_projectile() -> void:
+func tick() -> void:
+	for idx: int in range(count):
+		spawn_projectile(idx)
+
+
+func spawn_projectile(idx: int = 0) -> void:
 	if not projectile: return
 
 	var proj_2d: Projectile2D = Projectile2D.new()
-	proj_2d.global_position = get_spawn_position()
+	proj_2d.global_position = get_spawn_position(pos_seq + (idx * (1.0 / count)))
 	proj_2d.projectile = projectile
 	proj_2d.play_in_editor = true
 
@@ -90,9 +96,9 @@ func spawn_projectile() -> void:
 		SpawnDirection.FACING_DIRECTION:
 			proj_2d.rotation = direction.angle()
 
-	proj_2d.rotation += get_proj_angle()
+	proj_2d.rotation += get_proj_angle(rot_seq + (idx * (1.0 / count)))
 
-	get_parent().add_child(proj_2d)
+	get_parent().add_child.call_deferred(proj_2d)
 
 	pos_seq += spawn_timer.wait_time * spawn_sequence_freq
 	rot_seq += spawn_timer.wait_time * angle_sequence_freq
@@ -102,15 +108,15 @@ func spawn_projectile() -> void:
 		if proj_2d: proj_2d.queue_free()
 
 
-func get_spawn_position() -> Vector2:
+func get_spawn_position(idx: float) -> Vector2:
 	if not edges_only:
 		match spawn_sequence:
 			SequenceType.RANDOM:
 				return global_position + Vector2(randf_range(-spawn_size.x / 2.0, spawn_size.x / 2.0), randf_range(-spawn_size.y / 2.0, spawn_size.y / 2.0))
 			SequenceType.WRAP:
-				return (fmod(pos_seq, 1.0) - 0.5) * spawn_size + global_position
+				return (fmod(idx, 1.0) - 0.5) * spawn_size + global_position
 			SequenceType.PING_PONG:
-				return (abs(fmod(pos_seq + 1.0, 2.0) - 1.0) - 0.5) * spawn_size + global_position
+				return (abs(fmod(idx + 1.0, 2.0) - 1.0) - 0.5) * spawn_size + global_position
 	
 	match spawn_sequence:
 		SequenceType.RANDOM:
@@ -124,8 +130,8 @@ func get_spawn_position() -> Vector2:
 				3:
 					return global_position + Vector2(randf_range(-spawn_size.x / 2.0, spawn_size.x / 2.0), -spawn_size.y / 2.0)
 		SequenceType.WRAP:
-			var edge: int = floor(min(fmod(pos_seq, 1.0), 0.999) * 4.0)
-			var prog: float = (4.0 * fmod(min(fmod(pos_seq, 1.0), 0.999), 0.25)) - 0.5
+			var edge: int = floor(min(fmod(idx, 1.0), 0.999) * 4.0)
+			var prog: float = (4.0 * fmod(min(fmod(idx, 1.0), 0.999), 0.25)) - 0.5
 			match edge:
 				0:
 					return global_position + Vector2(spawn_size.x / 2.0, spawn_size.y * prog)
@@ -136,8 +142,8 @@ func get_spawn_position() -> Vector2:
 				3:
 					return global_position + Vector2(prog * spawn_size.x, -spawn_size.y / 2.0)
 		SequenceType.PING_PONG:
-			var edge: int = floor(min(abs(fmod(pos_seq + 1.0, 2.0) - 1.0), 0.999) * 4.0)
-			var prog: float = (4.0 * fmod(abs(fmod(pos_seq + 1.0, 2.0) - 1.0), 0.25)) - 0.5
+			var edge: int = floor(min(abs(fmod(idx + 1.0, 2.0) - 1.0), 0.999) * 4.0)
+			var prog: float = (4.0 * fmod(min(abs(fmod(idx + 1.0, 2.0) - 1.0), 0.999), 0.25)) - 0.5
 			match edge:
 				0:
 					return global_position + Vector2(spawn_size.x / 2.0, spawn_size.y * prog)
@@ -151,14 +157,14 @@ func get_spawn_position() -> Vector2:
 	return global_position
 
 
-func get_proj_angle() -> float:
+func get_proj_angle(idx: float) -> float:
 	match angle_sequence:
 		SequenceType.RANDOM:
 			return randf_range(-spread_angle / 2.0, spread_angle / 2.0)
 		SequenceType.PING_PONG:
-			return spread_angle * (abs(fmod(rot_seq + 1.0, 2.0) - 1.0) - 0.5)
+			return spread_angle * (abs(fmod(idx + 1.0, 2.0) - 1.0) - 0.5)
 		SequenceType.WRAP:
-			return spread_angle * (fmod(rot_seq, 1.0) - 0.5)
+			return spread_angle * (fmod(idx, 1.0) - 0.5)
 	
 	return 0.0
 
