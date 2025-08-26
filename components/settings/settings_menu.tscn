@@ -1,0 +1,214 @@
+[gd_scene load_steps=4 format=3 uid="uid://b67hu6vcdfjj5"]
+
+[ext_resource type="Script" uid="uid://c53fdsiqa4urk" path="res://components/settings/settings.gd" id="1_gutbt"]
+[ext_resource type="FontFile" uid="uid://127nj318r7b2" path="res://ui/fonts/upheavtt.ttf" id="2_jih4d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mfdua"]
+font = ExtResource("2_jih4d")
+font_size = 24
+
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "shake_toggle")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gutbt")
+master_slider = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolume/HSlider")
+music_slider = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider/HSlider")
+sfx_slider = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXSlider/HSlider")
+ui_slider = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/UISlider/HSlider")
+shake_toggle = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ShakeToggle/CheckButton")
+metadata/_custom_type_script = "uid://c53fdsiqa4urk"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(188, 276)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_mfdua")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="MasterVolume" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Refresh" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolume"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "R"
+
+[node name="Mute" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolume"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "M"
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.5
+text = "Master"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Refresh" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "R"
+
+[node name="Mute" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "M"
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.5
+text = "Music"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Refresh" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXSlider"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "R"
+
+[node name="Mute" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXSlider"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "M"
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.5
+text = "SFX"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="UISlider" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/UISlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Refresh" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/UISlider"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "R"
+
+[node name="Mute" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/UISlider"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+text = "M"
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/UISlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.5
+text = "UI"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ShakeToggle" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ShakeToggle"]
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ShakeToggle"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.5
+text = "Shake Screen"
+horizontal_alignment = 2
+vertical_alignment = 1

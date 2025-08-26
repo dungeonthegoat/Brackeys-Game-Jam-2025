@@ -9,4 +9,5 @@ func _ready() -> void:
 
 
 func _player_hit(_damage: int) -> void:
+	if not Settings.shake_toggle: return
 	shaker.shake()

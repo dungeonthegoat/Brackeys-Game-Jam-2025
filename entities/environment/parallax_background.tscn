@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn45t172i5xl7"]
+
+[ext_resource type="Script" uid="uid://c8nxi6su8m20" path="res://entities/environment/parallax_background.gd" id="1_ue76e"]
+[ext_resource type="Texture2D" uid="uid://bgtkg8rq3rswt" path="res://entities/environment/forest.png" id="2_f26j6"]
+[ext_resource type="Texture2D" uid="uid://6m4itlhib0nl" path="res://entities/environment/blue.png" id="3_f26j6"]
+[ext_resource type="Texture2D" uid="uid://dy0mabgqtpcmt" path="res://entities/environment/cloud_3.png" id="4_3yni2"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_ue76e")
+scroll_speed = 100.0
+
+[node name="Forest" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0.1)
+motion_mirroring = Vector2(0, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="Forest"]
+z_index = -100
+texture = ExtResource("2_f26j6")
+centered = false
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0.2)
+motion_mirroring = Vector2(0, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+z_index = -80
+texture = ExtResource("3_f26j6")
+centered = false
+
+[node name="Cloud" type="ParallaxLayer" parent="."]
+modulate = Color(1, 1, 1, 0.443137)
+motion_scale = Vector2(0, 0.6)
+motion_mirroring = Vector2(0, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cloud"]
+z_index = -80
+texture = ExtResource("4_3yni2")
+centered = false

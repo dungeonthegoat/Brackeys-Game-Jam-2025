@@ -1,48 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=10 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://bmt287ayg25cn" path="res://components/projectile/projectile_spawner_2d.gd" id="3_74lek"]
 [ext_resource type="PackedScene" uid="uid://bmca3dsipxofp" path="res://entities/player/player_camera.tscn" id="3_iyx0m"]
-[ext_resource type="Resource" uid="uid://bymlx5kac4q12" path="res://entities/projectiles/test_projectile_6/test_projectile_6.tres" id="5_j5jx5"]
+[ext_resource type="Resource" uid="uid://b4c75agq23676" path="res://entities/projectiles/test_projectile_7/test_projectile_7.tres" id="6_at5dv"]
 [ext_resource type="PackedScene" uid="uid://cyuuab2j0bfa2" path="res://components/challenge_level/ChallengeLevel.tscn" id="6_lpvoh"]
+[ext_resource type="PackedScene" uid="uid://cn45t172i5xl7" path="res://entities/environment/parallax_background.tscn" id="7_at5dv"]
+[ext_resource type="PackedScene" uid="uid://dyk43ljnncsge" path="res://entities/environment/parallax_foreground.tscn" id="8_jcd4p"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5jx5"]
 
 [node name="Test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
-position = Vector2(-191, 83)
+position = Vector2(-40, 5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_bl13t")]
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_iyx0m")]
-
-[node name="ProjectileSpawner2D" type="Node2D" parent="."]
-position = Vector2(-145, 0)
-script = ExtResource("3_74lek")
-spawn_sequence = 1
-spawn_sequence_freq = 0.02
-projectile = ExtResource("5_j5jx5")
-spawn_direction = 2
-angle_sequence = 1
-angle_sequence_freq = 0.0
-spawn_rate = 8.0
-metadata/_custom_type_script = "uid://bmt287ayg25cn"
-
-[node name="ProjectileSpawner2D2" type="Node2D" parent="."]
-position = Vector2(166, 0)
-script = ExtResource("3_74lek")
-spawn_sequence = 1
-spawn_sequence_freq = 0.02
-projectile = ExtResource("5_j5jx5")
-spawn_direction = 2
-angle_sequence = 1
-angle_sequence_freq = 0.0
-spawn_rate = 8.0
-metadata/_custom_type_script = "uid://bmt287ayg25cn"
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 
@@ -66,3 +44,20 @@ rotation = 4.71238
 shape = SubResource("WorldBoundaryShape2D_j5jx5")
 
 [node name="ChallengeLevel" parent="." instance=ExtResource("6_lpvoh")]
+
+[node name="ProjectileSpawner2D" type="Node2D" parent="."]
+script = ExtResource("3_74lek")
+count = 5
+spawn_sequence = 1
+projectile = ExtResource("6_at5dv")
+spread_angle = 6.28
+angle_sequence = 1
+angle_sequence_freq = 0.02
+spawn_rate = 10.0
+metadata/_custom_type_script = "uid://bmt287ayg25cn"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("7_at5dv")]
+layer = -1
+
+[node name="ParallaxForeground" parent="." instance=ExtResource("8_jcd4p")]
+layer = 10

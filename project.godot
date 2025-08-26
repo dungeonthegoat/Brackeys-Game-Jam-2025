@@ -13,11 +13,12 @@ config_version=5
 config/name="Brackeys"
 run/main_scene="uid://davlv2475amdw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://entities/player/icon.svg"
+config/icon="res://entities/player/sprites/icon.svg"
 
 [autoload]
 
 Game="*res://components/game.gd"
+Settings="*res://components/settings/settings_singleton.gd"
 
 [debug]
 
@@ -39,6 +40,10 @@ enabled=PackedStringArray("res://addons/shaker2d/plugin.cfg", "res://addons/wigg
 Player=""
 InstantZones=""
 GradualZones=""
+
+[gui]
+
+theme/custom="uid://blmrkca0mgl7s"
 
 [input]
 

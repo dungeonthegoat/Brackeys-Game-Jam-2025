@@ -1,3 +1,4 @@
+class_name MovementController
 extends Node
 
 
@@ -5,10 +6,10 @@ extends Node
 @export var acceleration: float = 1200.0
 @export var max_speed: float = 300.0
 @export var slow_speed: float = 80.0
-@export var shrink_scale: float = 0.7
 
 
 var movement_vector: Vector2
+var shrunk: bool = false
 
 
 @onready var speed: float = max_speed
@@ -28,10 +29,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _toggle_shrink(value: bool) -> void:
+	shrunk = value
+
 	if not value:
 		speed = max_speed
-		body.scale = Vector2.ONE
 		return
 	
 	speed = slow_speed
-	body.scale = Vector2.ONE * shrink_scale

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyk43ljnncsge"]
+
+[ext_resource type="Script" uid="uid://c8nxi6su8m20" path="res://entities/environment/parallax_background.gd" id="1_3yfvc"]
+[ext_resource type="Texture2D" uid="uid://7nq5v3co2bgm" path="res://entities/environment/cloud_2.png" id="5_wvxe8"]
+
+[node name="ParallaxForeground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_3yfvc")
+scroll_speed = 100.0
+
+[node name="FrontClouds" type="ParallaxLayer" parent="."]
+modulate = Color(1, 1, 1, 0.666667)
+motion_scale = Vector2(0, 1.2)
+motion_mirroring = Vector2(0, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="FrontClouds"]
+z_index = 100
+texture = ExtResource("5_wvxe8")
+centered = false

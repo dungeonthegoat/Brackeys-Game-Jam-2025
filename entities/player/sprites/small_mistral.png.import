@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dppl1jmvbphy3"
-path="res://.godot/imported/icon.svg-6b7bad1ac33b07fda2f406039dfd081a.ctex"
+uid="uid://bxtu6sd1a8xpe"
+path="res://.godot/imported/small_mistral.png-8cae987e151a9d23b1f958ec5d895e6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-6b7bad1ac33b07fda2f406039dfd081a.ctex"]
+source_file="res://entities/player/sprites/small_mistral.png"
+dest_files=["res://.godot/imported/small_mistral.png-8cae987e151a9d23b1f958ec5d895e6f.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
