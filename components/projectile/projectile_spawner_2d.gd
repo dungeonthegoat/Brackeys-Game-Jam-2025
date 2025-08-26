@@ -26,6 +26,8 @@ enum SequenceType {
 ## The projectile to spawn.
 @export var projectile: Projectile
 
+@export var autoplay: bool = false
+
 ## Whether or not it is currently spawning.
 @export var playing: bool = false:
 	set(value):
@@ -73,7 +75,7 @@ func _ready() -> void:
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(tick)
 
-	if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint() and autoplay:
 		playing = true
 
 

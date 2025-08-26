@@ -42,9 +42,9 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.autostart = true
 
-	var mat: CanvasItemMaterial = CanvasItemMaterial.new()
-	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-	sprite.material = mat
+	# var mat: CanvasItemMaterial = CanvasItemMaterial.new()
+	# mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	# sprite.material = mat
 
 	add_child(timer)
 	add_child(sprite)
@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 	if (not play_in_editor) and Engine.is_editor_hint():
 		return
 	
-	if abs(global_position.x) > ARENA_WIDTH / 2.0 or abs(global_position.y) > ARENA_HEIGHT / 2.0:
+	if (abs(global_position.x) > ARENA_WIDTH / 2.0 or abs(global_position.y) > ARENA_HEIGHT / 2.0) and projectile.destroy_out_of_bounds:
 		destroy()
 
 	t += delta * movement.frequency

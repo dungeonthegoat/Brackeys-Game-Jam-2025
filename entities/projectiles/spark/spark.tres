@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=5 format=3 uid="uid://dufcn5hwpfq8n"]
+
+[ext_resource type="Script" uid="uid://71yeacgk7hc7" path="res://components/projectile/projectile_movement_pattern.gd" id="1_f74yq"]
+[ext_resource type="Script" uid="uid://clrylbqkrute1" path="res://components/projectile/projectile.gd" id="2_6srxm"]
+[ext_resource type="Texture2D" uid="uid://cv6ndcsgk0l02" path="res://entities/projectiles/spark/projectile_spark.png" id="3_pcbu0"]
+
+[sub_resource type="Resource" id="Resource_0cquw"]
+script = ExtResource("1_f74yq")
+initial_speed = 100.0
+acceleration = Vector2(0, 0)
+global_acceleration = Vector2(0, 0)
+rotation_speed = 0.0
+rotational_accel = 0.0
+frequency = 0.0
+amplitude = 0.0
+wave_axis = Vector2(1, 0)
+noise_freq = 1000.0
+noise_amp = 400.0
+metadata/_custom_type_script = "uid://71yeacgk7hc7"
+
+[resource]
+script = ExtResource("2_6srxm")
+destroy_out_of_bounds = true
+texture = ExtResource("3_pcbu0")
+lifetime = 45.0
+damage = 1
+target_group = 1
+piercing = false
+size = Vector2i(6, 6)
+movement_pattern = SubResource("Resource_0cquw")
+metadata/_custom_type_script = "uid://clrylbqkrute1"

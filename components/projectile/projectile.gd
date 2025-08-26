@@ -9,6 +9,7 @@ enum TargetGroup {
 }
 
 
+@export var destroy_out_of_bounds: bool = true
 ## The sprite of the projectile, facing rightward.
 @export var texture: Texture2D
 
