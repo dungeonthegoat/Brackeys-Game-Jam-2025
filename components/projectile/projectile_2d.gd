@@ -21,6 +21,7 @@ var velocity: Vector2
 var global_velocity: Vector2 = Vector2.ZERO
 var noise_velocity: Vector2
 var rot_speed: float
+var lifetime: float = 0.0
 
 var noise_t: float
 var t: float
@@ -38,7 +39,11 @@ func _ready() -> void:
 	collision_mask = 0
 	collision.shape = rect
 
-	timer.wait_time = projectile.lifetime
+	if lifetime != 0.0:
+		timer.wait_time = lifetime
+	else:
+		timer.wait_time = projectile.lifetime
+	
 	timer.one_shot = true
 	timer.autostart = true
 

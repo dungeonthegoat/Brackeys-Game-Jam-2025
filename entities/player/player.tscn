@@ -751,12 +751,13 @@ material = SubResource("ShaderMaterial_26q78")
 sprite_frames = SubResource("SpriteFrames_bls4j")
 animation = &"big"
 
-[node name="MovementController" type="Node" parent="." node_paths=PackedStringArray("body")]
+[node name="MovementController" type="Node" parent="." node_paths=PackedStringArray("body", "collision")]
 script = ExtResource("2_abrql")
 body = NodePath("..")
 acceleration = 2500.0
 max_speed = 200.0
 slow_speed = 100.0
+collision = NodePath("../CollisionShape/CollisionShape2D")
 
 [node name="CollisionShape" type="Area2D" parent="." node_paths=PackedStringArray("blinking_anim_player")]
 collision_layer = 0

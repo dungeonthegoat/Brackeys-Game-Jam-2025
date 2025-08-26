@@ -6,6 +6,7 @@ extends Node
 @export var acceleration: float = 1200.0
 @export var max_speed: float = 300.0
 @export var slow_speed: float = 80.0
+@export var collision: CollisionShape2D
 
 
 var movement_vector: Vector2
@@ -32,7 +33,9 @@ func _toggle_shrink(value: bool) -> void:
 	shrunk = value
 
 	if not value:
+		collision.shape.radius = 9
 		speed = max_speed
 		return
 	
+	collision.shape.radius = 5
 	speed = slow_speed

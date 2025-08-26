@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=10 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
 [ext_resource type="PackedScene" uid="uid://bmca3dsipxofp" path="res://entities/player/player_camera.tscn" id="3_iyx0m"]
 [ext_resource type="Script" uid="uid://csbu2dl60vrrx" path="res://components/oscillator_2d/circular_oscillator.gd" id="6_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://cn45t172i5xl7" path="res://entities/environment/parallax_background.tscn" id="7_at5dv"]
+[ext_resource type="Resource" uid="uid://jqse61vp7ihp" path="res://entities/projectiles/arrow/arrow.tres" id="7_jcd4p"]
+[ext_resource type="Script" uid="uid://bmt287ayg25cn" path="res://components/projectile/projectile_spawner_2d.gd" id="7_uacia"]
 [ext_resource type="PackedScene" uid="uid://dyk43ljnncsge" path="res://entities/environment/parallax_foreground.tscn" id="8_jcd4p"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5jx5"]
@@ -39,7 +41,7 @@ rotation = 4.71238
 shape = SubResource("WorldBoundaryShape2D_j5jx5")
 
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
-position = Vector2(12, -12)
+position = Vector2(-4, 1)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("7_at5dv")]
 layer = -1
@@ -47,12 +49,23 @@ layer = -1
 [node name="ParallaxForeground" parent="." instance=ExtResource("8_jcd4p")]
 layer = 10
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-121, 8)
-
-[node name="CircularOscillator2D" type="Node2D" parent="Node2D"]
-position = Vector2(-63.9164, -3.27057)
-script = ExtResource("6_lpvoh")
-radius = 64.0
+[node name="ProjectileSpawner2D" type="Node2D" parent="." node_paths=PackedStringArray("oscillator")]
+position = Vector2(-233, -108)
+script = ExtResource("7_uacia")
+lifetime_override = 0.2
+projectile = ExtResource("7_jcd4p")
+autoplay = true
 playing = true
+spawn_direction = 2
+spawn_rate = 20.0
+oscillator = NodePath("../CircularOscillator2D")
+metadata/_custom_type_script = "uid://bmt287ayg25cn"
+
+[node name="CircularOscillator2D" type="Node2D" parent="."]
+position = Vector2(-5.45253, 161.908)
+script = ExtResource("6_lpvoh")
+rotation_speed = 3.0
+radius = 162.0
+playing = true
+autoplay = true
 metadata/_custom_type_script = "uid://csbu2dl60vrrx"

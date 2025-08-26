@@ -17,6 +17,7 @@ enum SequenceType {
 }
 
 
+@export var lifetime_override: float = 0.0
 @export var count: int = 1
 @export var spawn_size: Vector2
 @export var edges_only: bool
@@ -61,6 +62,11 @@ enum SequenceType {
 			spawn_timer.wait_time = 1.0 / spawn_rate
 
 
+@export var oscillator: Node2D
+
+@export var target_node: Node2D
+
+
 var pos_seq: float = 0.0
 var rot_seq: float = 0.0
 
@@ -88,21 +94,30 @@ func spawn_projectile(idx: int = 0) -> void:
 	if not projectile: return
 
 	var proj_2d: Projectile2D = Projectile2D.new()
-	proj_2d.global_position = get_spawn_position(pos_seq + (idx * (1.0 / count)))
+	if oscillator:
+		proj_2d.global_position = oscillator.global_position
+	else:
+		proj_2d.global_position = get_spawn_position(pos_seq + (idx * (1.0 / count)))
 	proj_2d.projectile = projectile
 	proj_2d.play_in_editor = true
 
-	match spawn_direction:
-		SpawnDirection.FACING_PLAYER:
-			var pos: Vector2 = Game.get_player_position()
-			if pos != null:
-				proj_2d.rotation = proj_2d.global_position.angle_to_point(pos)
-		SpawnDirection.FACING_CENTER:
-			proj_2d.rotation = proj_2d.global_position.angle_to_point(Vector2.ZERO)
-		SpawnDirection.FACING_DIRECTION:
-			proj_2d.rotation = direction.angle()
+	if not target_node:
+		match spawn_direction:
+			SpawnDirection.FACING_PLAYER:
+				var pos: Vector2 = Game.get_player_position()
+				if pos != null:
+					proj_2d.rotation = proj_2d.global_position.angle_to_point(pos)
+			SpawnDirection.FACING_CENTER:
+				proj_2d.rotation = proj_2d.global_position.angle_to_point(Vector2.ZERO)
+			SpawnDirection.FACING_DIRECTION:
+				proj_2d.rotation = direction.angle()
+	else:
+		proj_2d.rotation = proj_2d.global_position.angle_to_point(target_node.global_position)
+	
 
 	proj_2d.rotation += get_proj_angle(rot_seq + (idx * (1.0 / count)))
+
+	proj_2d.lifetime = lifetime_override
 
 	get_parent().add_child.call_deferred(proj_2d)
 
