@@ -27,7 +27,7 @@ func _area_entered(area: Area2D) -> void:
 	var proj_2d: Projectile2D = area as Projectile2D
 
 	hurt.emit(proj_2d.projectile.damage)
-	blinking_anim_player.play("blinking")
+	blinking_anim_player.play("blink")
 	timer.start(i_frame_time)
 
 	if not proj_2d.projectile.piercing:

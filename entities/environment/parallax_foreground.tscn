@@ -10,10 +10,11 @@ scroll_speed = 100.0
 
 [node name="FrontClouds" type="ParallaxLayer" parent="."]
 modulate = Color(1, 1, 1, 0.666667)
-motion_scale = Vector2(0, 1.2)
+motion_scale = Vector2(0, 1)
 motion_mirroring = Vector2(0, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="FrontClouds"]
+self_modulate = Color(1, 1, 1, 0.219608)
 z_index = 100
 texture = ExtResource("5_wvxe8")
 centered = false

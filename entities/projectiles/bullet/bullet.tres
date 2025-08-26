@@ -20,6 +20,7 @@ metadata/_custom_type_script = "uid://71yeacgk7hc7"
 
 [resource]
 script = ExtResource("1_e04p1")
+destroy_out_of_bounds = true
 texture = ExtResource("2_ca4oy")
 lifetime = 30.0
 damage = 1
