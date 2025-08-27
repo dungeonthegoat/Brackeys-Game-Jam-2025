@@ -26,6 +26,6 @@ lifetime = 30.0
 damage = 1
 target_group = 1
 piercing = false
-size = Vector2i(16, 16)
+size = Vector2i(9, 9)
 movement_pattern = SubResource("Resource_10cj3")
 metadata/_custom_type_script = "uid://clrylbqkrute1"

@@ -20,14 +20,11 @@ enum TargetGroup {
 ## The amount of damage this projectile does.
 @export_range(0, 4, 1, "or_greater", "suffix:dmg") var damage: int = 1
 
-## The group of entities which this projectile can damage.
-@export var target_group: TargetGroup = TargetGroup.PLAYER
-
 ## Whether or not the projectile persists after damaging an entity.
 @export var piercing: bool = false
 
-## The size of the hitbox, in px.
-@export var size: Vector2i = Vector2i(16, 16)
+## The shape of the hitbox
+@export var shape: Shape2D
 
 
 @export_group("Movement")
