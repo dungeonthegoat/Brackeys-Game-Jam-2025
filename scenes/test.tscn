@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=12 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://csbu2dl60vrrx" path="res://components/oscillator_2d/circular_oscillator.gd" id="8_uacia"]
 [ext_resource type="Resource" uid="uid://bkox61tby2wea" path="res://entities/projectiles/circle/circle.tres" id="9_uacia"]
 [ext_resource type="Resource" uid="uid://jqse61vp7ihp" path="res://entities/projectiles/arrow/arrow.tres" id="9_yk7ts"]
+[ext_resource type="PackedScene" uid="uid://34qi0n2fao3t" path="res://components/completion_timer/CompletionTimer.tscn" id="10_yk7ts"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5jx5"]
 
@@ -67,11 +68,10 @@ metadata/_custom_type_script = "uid://bmt287ayg25cn"
 scale = Vector2(1.93677, 0.885945)
 
 [node name="CircularOscillator2D" type="Node2D" parent="Node2D"]
-position = Vector2(81.7009, -98.5341)
+position = Vector2(128, 0)
 script = ExtResource("8_uacia")
 rotation_speed = 4.0
 radius = 128.0
-playing = true
 autoplay = true
 metadata/_custom_type_script = "uid://csbu2dl60vrrx"
 
@@ -87,3 +87,6 @@ angle_sequence_freq = 0.05
 spawn_time = 0.5
 oscillator = NodePath("../Node2D/CircularOscillator2D")
 metadata/_custom_type_script = "uid://bmt287ayg25cn"
+
+[node name="CompletionTimer" parent="." instance=ExtResource("10_yk7ts")]
+Countdown_Time = 500.0

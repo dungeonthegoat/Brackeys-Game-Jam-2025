@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 signal change_state(state: bool)
 signal challenge_failed()
