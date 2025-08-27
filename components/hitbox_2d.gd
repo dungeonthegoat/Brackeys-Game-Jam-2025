@@ -25,8 +25,9 @@ func hit(proj_2d: Projectile2D) -> void:
 
 	hurt.emit(proj_2d.projectile.damage)
 	blinking_anim_player.play("blink")
-	timer.start(i_frame_time)
-	
+	if i_frame_time != 0:
+		timer.start(i_frame_time)
+
 	if not proj_2d.projectile.piercing:
 		proj_2d.destroy()
 

@@ -17,7 +17,6 @@ enum SequenceType {
 }
 
 
-@export var lifetime_override: float = 0.0
 @export var count: int = 1
 @export var spawn_size: Vector2
 @export var edges_only: bool
@@ -31,7 +30,8 @@ enum SequenceType {
 @export var playing: bool = false:
 	set(value):
 		playing = value
-		spawn_projectile()
+		if value:
+			tick()
 
 ## The direction which projectiles spawn facing.
 @export var spawn_direction: SpawnDirection = SpawnDirection.FACING_DIRECTION
@@ -61,6 +61,7 @@ var rot_seq: float = 0.0
 
 
 func _ready() -> void:
+	playing = false
 	if not Engine.is_editor_hint() and autoplay:
 		playing = true
 
@@ -76,7 +77,7 @@ func _process(delta: float) -> void:
 		return
 	
 	spawn_timer += delta
-	
+
 	if spawn_timer > spawn_time:
 		for _idx: int in range(floor(spawn_timer / spawn_time)):
 			tick()
@@ -84,7 +85,7 @@ func _process(delta: float) -> void:
 
 
 func spawn_projectile(idx: int = 0) -> void:
-	if not projectile: return
+	if not projectile or not get_parent(): return
 
 	# print(Engine.get_frames_per_second())
 
@@ -111,8 +112,6 @@ func spawn_projectile(idx: int = 0) -> void:
 	
 
 	proj_2d.rotation += get_proj_angle(rot_seq + (idx * (1.0 / count)))
-
-	proj_2d.lifetime = lifetime_override
 
 	get_parent().add_child.call_deferred(proj_2d)
 

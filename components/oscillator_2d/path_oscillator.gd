@@ -15,6 +15,12 @@ extends PathFollow2D
 var dir: float = 1.0
 
 
+func _ready() -> void:
+	progress = 0
+	if autoplay:
+		playing = true
+
+
 func _process(delta: float) -> void:
 	if playing:
 		progress += follow_speed * delta * dir

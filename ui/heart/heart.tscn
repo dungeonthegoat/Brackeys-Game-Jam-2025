@@ -14,6 +14,5 @@ texture = NodePath("TextureRect")
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-scale = Vector2(0.999422, 1.00058)
 pivot_offset = Vector2(16, 16)
 texture = ExtResource("1_k8aaq")

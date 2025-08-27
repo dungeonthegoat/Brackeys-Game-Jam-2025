@@ -6,6 +6,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_mfdua"]
 font = ExtResource("2_jih4d")
 font_size = 24
+font_color = Color(1, 1, 0.694118, 1)
+outline_size = 4
+outline_color = Color(0.505882, 0.231373, 0.0784314, 1)
+shadow_size = 2
+shadow_color = Color(0.183022, 0.0175585, 0.0598048, 0.784314)
 
 [node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "shake_toggle")]
 layout_mode = 3

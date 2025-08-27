@@ -21,7 +21,8 @@ var velocity: Vector2
 var global_velocity: Vector2 = Vector2.ZERO
 var noise_velocity: Vector2
 var rot_speed: float
-var lifetime: float = 5.0
+
+var life_timer: float = 0.0
 
 var noise_t: float
 var t: float
@@ -50,6 +51,10 @@ func _physics_process(delta: float) -> void:
 
 	_process_collision()
 
+	life_timer += delta
+	if life_timer > projectile.lifetime:
+		destroy()
+
 	t += delta * movement.frequency
 	velocity += movement.acceleration * delta
 	global_velocity += movement.global_acceleration * delta
@@ -75,6 +80,8 @@ func _process_collision_result(collision_result: Array[Dictionary]) -> void:
 	if collision_result.size() == 0 or Engine.is_editor_hint(): return
 	var hitbox: Hitbox2D = collision_result[0]["collider"]
 	hitbox.hit(self)
+	if not projectile.piercing:
+		destroy()
 
 
 func _update_projectile(new_proj: Projectile) -> void:

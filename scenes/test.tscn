@@ -1,18 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://davlv2475amdw"]
+[gd_scene load_steps=11 format=3 uid="uid://davlv2475amdw"]
 
 [ext_resource type="PackedScene" uid="uid://ddu0xtlx3viq8" path="res://entities/player/player.tscn" id="1_errlg"]
 [ext_resource type="PackedScene" uid="uid://c8qoeq1ssscbs" path="res://ui/hud.tscn" id="2_bl13t"]
 [ext_resource type="PackedScene" uid="uid://bmca3dsipxofp" path="res://entities/player/player_camera.tscn" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://cn45t172i5xl7" path="res://entities/environment/parallax_background.tscn" id="7_at5dv"]
-[ext_resource type="Resource" uid="uid://jqse61vp7ihp" path="res://entities/projectiles/arrow/arrow.tres" id="7_jcd4p"]
 [ext_resource type="Script" uid="uid://bmt287ayg25cn" path="res://components/projectile/projectile_spawner_2d.gd" id="7_uacia"]
 [ext_resource type="PackedScene" uid="uid://dyk43ljnncsge" path="res://entities/environment/parallax_foreground.tscn" id="8_jcd4p"]
+[ext_resource type="Script" uid="uid://csbu2dl60vrrx" path="res://components/oscillator_2d/circular_oscillator.gd" id="8_uacia"]
+[ext_resource type="Resource" uid="uid://bkox61tby2wea" path="res://entities/projectiles/circle/circle.tres" id="9_uacia"]
+[ext_resource type="Resource" uid="uid://jqse61vp7ihp" path="res://entities/projectiles/arrow/arrow.tres" id="9_yk7ts"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5jx5"]
 
 [node name="Test" type="Node2D"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
+layer = 100
 
 [node name="HUD" parent="GUI" instance=ExtResource("2_bl13t")]
 
@@ -40,7 +43,7 @@ rotation = 4.71238
 shape = SubResource("WorldBoundaryShape2D_j5jx5")
 
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
-position = Vector2(-4, 1)
+position = Vector2(-90, 57)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("7_at5dv")]
 layer = -1
@@ -48,13 +51,39 @@ layer = -1
 [node name="ParallaxForeground" parent="." instance=ExtResource("8_jcd4p")]
 layer = 10
 
-[node name="ProjectileSpawner2D" type="Node2D" parent="."]
-position = Vector2(-165, -6)
+[node name="ProjectileSpawner2D2" type="Node2D" parent="."]
 script = ExtResource("7_uacia")
-count = 10
-spawn_size = Vector2(200, 200)
-projectile = ExtResource("7_jcd4p")
+count = 2
+projectile = ExtResource("9_uacia")
 autoplay = true
 spawn_direction = 2
-spawn_time = 0.05
+spread_angle = 6.28
+angle_sequence = 1
+angle_sequence_freq = 1.37
+spawn_time = 0.2
+metadata/_custom_type_script = "uid://bmt287ayg25cn"
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(1.93677, 0.885945)
+
+[node name="CircularOscillator2D" type="Node2D" parent="Node2D"]
+position = Vector2(81.7009, -98.5341)
+script = ExtResource("8_uacia")
+rotation_speed = 4.0
+radius = 128.0
+playing = true
+autoplay = true
+metadata/_custom_type_script = "uid://csbu2dl60vrrx"
+
+[node name="ProjectileSpawner2D" type="Node2D" parent="." node_paths=PackedStringArray("oscillator")]
+script = ExtResource("7_uacia")
+count = 10
+projectile = ExtResource("9_yk7ts")
+autoplay = true
+spawn_direction = 2
+spread_angle = 6.28
+angle_sequence = 1
+angle_sequence_freq = 0.05
+spawn_time = 0.5
+oscillator = NodePath("../Node2D/CircularOscillator2D")
 metadata/_custom_type_script = "uid://bmt287ayg25cn"

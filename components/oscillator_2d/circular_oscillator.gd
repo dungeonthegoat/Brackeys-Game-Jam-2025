@@ -11,6 +11,10 @@ extends Oscillator2D
 
 
 func _ready() -> void:
+	playing = false
+	angle = 0
+	t = 0
+
 	if not Engine.is_editor_hint() and autoplay:
 		playing = true
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Projectile" load_steps=5 format=3 uid="uid://q5n6pb22ei71"]
+[gd_resource type="Resource" script_class="Projectile" load_steps=6 format=3 uid="uid://q5n6pb22ei71"]
 
 [ext_resource type="Script" uid="uid://clrylbqkrute1" path="res://components/projectile/projectile.gd" id="1_qhxpx"]
 [ext_resource type="Script" uid="uid://71yeacgk7hc7" path="res://components/projectile/projectile_movement_pattern.gd" id="1_uupq8"]
@@ -18,14 +18,16 @@ noise_freq = 0.0
 noise_amp = 0.0
 metadata/_custom_type_script = "uid://71yeacgk7hc7"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uupq8"]
+size = Vector2(18, 7)
+
 [resource]
 script = ExtResource("1_qhxpx")
 destroy_out_of_bounds = true
 texture = ExtResource("2_yq7lo")
-lifetime = 30.0
+lifetime = 2.6
 damage = 4
-target_group = 1
 piercing = false
-size = Vector2i(24, 7)
+shape = SubResource("RectangleShape2D_uupq8")
 movement_pattern = SubResource("Resource_hykdh")
 metadata/_custom_type_script = "uid://clrylbqkrute1"
