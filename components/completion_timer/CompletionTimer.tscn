@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://34qi0n2fao3t"]
+
+[ext_resource type="Script" uid="uid://bnv0l004qfp6d" path="res://components/completion_timer/CompletionTimer.gd" id="1_km8uv"]
+
+[node name="CompletionTimer" type="Node2D"]
+script = ExtResource("1_km8uv")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
