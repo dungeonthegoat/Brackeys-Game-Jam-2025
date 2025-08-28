@@ -89,4 +89,4 @@ oscillator = NodePath("../Node2D/CircularOscillator2D")
 metadata/_custom_type_script = "uid://bmt287ayg25cn"
 
 [node name="CompletionTimer" parent="." instance=ExtResource("10_yk7ts")]
-Countdown_Time = 500.0
+countdown_time = 5.0

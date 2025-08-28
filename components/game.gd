@@ -2,14 +2,22 @@
 extends Node
 
 
+enum ChallengeState {
+	PASS,
+	FAIL
+}
+
+
 signal player_damaged(amount: int)
 signal player_healed(amount: int)
 signal player_health_changed(new_health: int)
 signal player_max_health_changed(new_max_health: int)
 signal player_died()
+signal challenge_ended(state: ChallengeState)
 
 
 const STARTING_MAX_HEALTH: int = 10
+
 
 var ChallengeLevel: Node2D
 var current_progress: float
@@ -19,7 +27,6 @@ var player_health: int:
 	set(new_health):
 		player_health = new_health
 		player_health_changed.emit(new_health)
-
 var player_max_health: int = STARTING_MAX_HEALTH:
 	set(new_max_health):
 		player_max_health = new_max_health
