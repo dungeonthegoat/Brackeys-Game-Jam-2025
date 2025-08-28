@@ -1,7 +1,11 @@
+@icon("res://components/challenge_level/challenge_level.svg")
+class_name ChallengeLevel
 extends Node2D
+
 
 signal challenge_progress_changed(new_progress: float)
 signal challenge_completed()
+
 
 var current_challenge: Challenge
 var progress: float

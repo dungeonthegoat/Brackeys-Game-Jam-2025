@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Challenge" load_steps=2 format=3 uid="uid://5r7f0wh5x4qa"]
+
+[ext_resource type="Script" uid="uid://76ak2o6j884w" path="res://components/challenge/challenge.gd" id="1_hcxoe"]
+
+[resource]
+script = ExtResource("1_hcxoe")
+metadata/_custom_type_script = "uid://76ak2o6j884w"

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://brilj8bu2njt2"]
+
+[ext_resource type="Script" uid="uid://bpxm65wmx7m3f" path="res://components/completion_zone_gradual/drop_zone.gd" id="1_i30os"]
+[ext_resource type="Texture2D" uid="uid://by30wuv73ayuh" path="res://components/completion_zone_gradual/goal_circle_1.png" id="2_sjmee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekx7v"]
+radius = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjmee"]
+bg_color = Color(0, 0, 0, 0.145098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.305882)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjaap"]
+bg_color = Color(0.899258, 0.899258, 0.899258, 0.772549)
+
+[node name="DropZone" type="Area2D" groups=["GradualZones"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_i30os")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ekx7v")
+debug_color = Color(0, 0.902345, 0.307359, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sjmee")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -26.0
+offset_top = -35.0
+offset_right = 26.0
+offset_bottom = -31.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sjmee")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qjaap")
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

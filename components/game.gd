@@ -13,7 +13,9 @@ signal player_healed(amount: int)
 signal player_health_changed(new_health: int)
 signal player_max_health_changed(new_max_health: int)
 signal player_died()
+
 signal challenge_ended(state: ChallengeState)
+
 
 
 const STARTING_MAX_HEALTH: int = 10

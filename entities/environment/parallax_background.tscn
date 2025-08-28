@@ -24,6 +24,7 @@ motion_scale = Vector2(0, 0.2)
 motion_mirroring = Vector2(0, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky"]
+self_modulate = Color(1, 1, 1, 0.670588)
 z_index = -80
 texture = ExtResource("3_f26j6")
 centered = false
